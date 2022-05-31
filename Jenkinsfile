@@ -7,8 +7,8 @@ pipeline {
     stages {
         stage("Tools initialization") {
             steps {
-                sh "mvn --version"
-                sh "java -version"
+                bat "mvn --version"
+                bat "java -version"
             }
         }
         stage("Checkout Code") {
@@ -26,7 +26,7 @@ pipeline {
                 }
            }
            steps {
-               sh "mvn clean compile"
+               bat "mvn clean compile"
             }
         }
         stage("Run Test cases") {
@@ -34,7 +34,7 @@ pipeline {
                 branch 'develop';
             }
            steps {
-               sh "mvn clean test"
+               bat "mvn clean test"
             }
         }
         stage("Check Code coverage") {
@@ -57,7 +57,7 @@ pipeline {
                 branch 'master'
             }
             steps {
-                sh "mvn tomcat7:deploy"
+                bat "mvn tomcat7:deploy"
             }
         }
     }
